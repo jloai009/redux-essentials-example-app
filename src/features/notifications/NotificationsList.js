@@ -20,7 +20,7 @@ export const NotificationsList = () => {
   const notifications = useSelector(selectAllNotifications)
   const notificationsStatus = useSelector(selectNotificationsStatus)
 
-  if (notificationsStatus === 'initialState') {
+  if (notificationsStatus === 'idle') {
     dispatch(fetchNotifications())
   }
 

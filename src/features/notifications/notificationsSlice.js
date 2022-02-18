@@ -19,6 +19,10 @@ const notificationsSlice = createSlice({
     builder
       .addCase(fetchNotifications.fulfilled, (state, action) => {
         state.notifications.push(...action.payload)
+        state.notifications.forEach((notification) => {
+          // Any notifications we've read are no longer new
+          notification.isNew = !notification.read
+        })
         state.notifications.sort((a, b) => b.date.localeCompare(a.date))
         state.status = 'Done'
       })
